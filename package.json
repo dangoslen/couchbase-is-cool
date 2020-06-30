@@ -1,0 +1,21 @@
+{
+  "name": "couchbase-intro",
+  "version": "1.0.0",
+  "description": "Couchbase intro slide deck",
+  "main": "index.js",
+  "scripts": {
+    "start": "mdx-deck deck.mdx",
+    "build": "mdx-deck build deck.mdx"
+  },
+  "author": "@dangoslen",
+  "license": "ISC",
+  "devDependencies": {
+    "code-surfer": "^3.1.0",
+    "mdx-deck": "^3.0.13",
+    "mdx-observable": "^0.2.0",
+    "react-mathjax": "^1.0.1"
+  },
+  "dependencies": {
+    "@theme-ui/components": "^0.3.1"
+  }
+}
