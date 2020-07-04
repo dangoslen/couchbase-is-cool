@@ -25,7 +25,7 @@ const Preso = ({ children }) => {
           opacity: `.6`
         }}
       >
-        <div><span>({ typeof window !== `undefined` ?  window.location.pathname.replace('/', '') : 0 })</span></div>
+        <div><span>{ typeof window !== `undefined` ?  window.location.pathname.replace('/', '') : 0 }</span></div>
         <div><span>Dan Goslen</span></div>
       </div>
     </div>
