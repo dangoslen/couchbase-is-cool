@@ -2,6 +2,7 @@ import BwTheme from './themes/theme.js'
 export const theme = BwTheme
 
 import Preso from './layouts/default.js'
+import Split34 from './layouts/split-34.js'
 import { Grid, Box, Input, Button } from '@theme-ui/components'
 import { Split } from 'mdx-deck'
 
@@ -38,6 +39,297 @@ import { Split } from 'mdx-deck'
 
 <small>Couchbase is a distributed NoSQL document store offering high-availability, complete with ACID compliance, memory-first architecture, and a SQL(ish) language for querying.</small>
 
+</Preso>
+
+---
+
+<Preso>
+
+<Split34>
+
+<div>
+
+### NoSQL
+
+<small>
+
+* Documents instead of rows/columns
+* Flexible schema
+* Data locality 
+
+</small>
+
+</div>
+
+<div>
+
+![](https://cdn.iconscout.com/icon/free/png-256/couchbase-1-285194.png)
+
+</div>
+
+</Split34>
+
+</Preso>
+
+---
+
+<Preso>
+
+<Split34>
+
+<div>
+
+### Distributed
+
+<small>
+
+* Data spread across multiple nodes
+* High availability
+* Cross data center replication available
+
+</small>
+
+</div>
+
+<div>
+
+![](https://cdn.iconscout.com/icon/free/png-256/couchbase-1-285194.png)
+
+</div>
+
+</Split34>
+
+</Preso>
+
+---
+
+
+<Preso>
+
+<Split34>
+
+<div>
+
+### ACID Compliant
+
+<small>
+
+* Distributed transactions
+* Durable data 
+
+</small>
+
+</div>
+
+<div>
+
+![](https://cdn.iconscout.com/icon/free/png-256/couchbase-1-285194.png)
+
+</div>
+
+</Split34>
+
+</Preso>
+
+---
+
+<Preso>
+
+<Split34>
+
+<div>
+
+### SQL(ish)
+
+<small>
+
+* N1QL query language
+* JSON-centric SQL
+* Declarative and ad-hoc
+* Supports 
+
+</small>
+
+</div>
+
+<div>
+
+![](https://cdn.iconscout.com/icon/free/png-256/couchbase-1-285194.png)
+
+</div>
+
+</Split34>
+
+</Preso>
+
+---
+
+<Preso>
+
+### How Are Documents Stored/Retrieved?
+
+* Documents get assigned a unique key
+* Documents stored via key in buckets
+* Buckets distributed across nodes in a cluster
+* Client responsible for locating proper node based on key
+
+</Preso>
+
+---
+
+<Preso>
+
+### Sharding or Distribution
+
+* Buckets split into vBuckets
+* Each vBuckets has an active and replica
+* An active and replica of the same vBucket cannot reside on the same node
+* Hashing of the key used to determine which vBucket
+
+</Preso>
+
+---
+
+<Preso>
+
+<div style='text-align: center'>
+
+<img 
+ style='width: 80%; border: 1px solid black; border-radius: 3px' 
+ src="https://res.cloudinary.com/dangoslen/image/upload/v1593715150/dangoslen.me/vbucketToNodeMapping_j7ygvk.png" />
+
+</div>
+
+</Preso>
+
+---
+
+<Preso>
+
+
+# Bucket Types
+
+</Preso>
+
+---
+
+<Preso>
+
+## Couchbase Bucket
+* "Standard" bucket
+* Full replication and data persistence
+
+</Preso>
+
+---
+
+<Preso>
+
+## Ephemeral Bucket
+* Memory-only
+* Full replication available
+* Think data-grid
+
+</Preso>
+
+---
+
+<Preso>
+
+## Memcached Bucket
+* Memory-only
+* No replication available
+* Think cache for another datastore
+
+</Preso>
+
+---
+
+<Preso>
+
+# N1QL
+
+## _Declartive queries for JSON documents_
+
+</Preso>
+
+---
+
+<Preso>
+
+## N1QL can ...
+* Query arrays and items in an array
+* Query sub-documents
+* Join documents
+
+</Preso>
+
+---
+
+<Preso>
+
+## JSON Schema
+
+```data-json
+{
+    name: “name”,
+    ingredients: [
+        { 
+            name: “name”,
+            ...
+        }
+    ],
+    ...
+}
+```
+
+</Preso>
+
+---
+
+<Preso>
+
+## Example Queries
+
+```language-sql
+// Select the first ingredient
+SELECT ingredients[0] FROM recipes;
+
+// Count the ingredients in each recipe
+SELECT ARRAY_LENGTH(ingredients) FROM recipes;
+
+// Find recipes with basil 
+SELECT recipe FROM recipes
+WHERE ANY ingredient IN ingredients 
+  SATISFIES ingredient.name = ‘basil’
+```
+
+</Preso>
+
+---
+
+<Preso>
+
+# Pros
+* Couchbase is very flexible
+* Great SDK (my personal experience)
+* Great docs 
+* Available as a docker container - easy to download and run
+* Administration is done via web user interface
+* Documents are compressed for storage efficiency 
+
+</Preso>
+
+---
+
+<Preso>
+
+# Cons
+* N1QL is generally slower than traditional SQL 
+* Proper indexing!
+* No good “migration management” tool for creating buckets or indexes
+* Limit on the size of a document is 20 Mb
+* 30 bucket limit per cluster
 
 </Preso>
 
@@ -46,12 +338,21 @@ import { Split } from 'mdx-deck'
 <Preso>
 
 # References
-* More Reading: [Bloom Filter (wikipedia)](https://en.wikipedia.org/wiki/Bloom_filter)
-* More Reading: [Jason Davies Blog](https://www.jasondavies.com/bloomfilter/)
-* Code: [Low Pass](https://github.com/Bandwidth/low-pass)
+* [Starting Point of Docs](https://docs.couchbase.com/server/current/learn/architecture-overview.html)
+* [N1QL Tutorial](https://query-tutorial.couchbase.com/tutorial/#1)
+* [More on N1QL](https://docs.couchbase.com/server/current/n1ql/query.html)
+* [SDK Tutorial](https://docs.couchbase.com/java-sdk/3.0/hello-world/start-using-sdk.html)
+* [Couchbase Docker Image](https://docs.couchbase.com/server/6.5/install/getting-started-docker.html)
+
 
 </Preso>
 
 ---
 
 # Thanks! 👋
+
+<small>
+
+[dangoslen.me](https://dangoslen.me)
+
+</small>

@@ -1,5 +1,6 @@
 // example Layout.js
 import React from 'react'
+import '../themes/css/prism.css'
 
 const Preso = ({ children }) => {
   return (
@@ -24,7 +25,7 @@ const Preso = ({ children }) => {
           opacity: `.6`
         }}
       >
-        <div><span>{window.location.pathname.replace('/', '')}</span></div>
+        <div><span>({ typeof window !== `undefined` ?  window.location.pathname.replace('/', '') : 0 })</span></div>
         <div><span>Dan Goslen</span></div>
       </div>
     </div>

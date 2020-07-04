@@ -16,6 +16,7 @@
     "react-mathjax": "^1.0.1"
   },
   "dependencies": {
-    "@theme-ui/components": "^0.3.1"
+    "@theme-ui/components": "^0.3.1",
+    "prismjs": "^1.20.0"
   }
 }

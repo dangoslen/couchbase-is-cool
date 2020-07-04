@@ -7,8 +7,8 @@ export default {
     monospace: '"Source+Code+Pro"',
   },
   colors: {
-    text: '#black',
-    background: 'white',
+    text: '#1c0a14',
+    background: '#fffff2',
     primary: '#f1935c',
   },
   styles: {
